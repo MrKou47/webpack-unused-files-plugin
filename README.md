@@ -24,21 +24,22 @@ module.exports = {
 
 ## Options
 
+```js
 const defaultOptions = {
   context: '',
   patterns: [
     "!**/node_modules",
     "!**/(test|tests)/**"
   ],
-  sort: null, // 'ext', 'path'
+  sort: null, // 'ext'
   strict: false,
 }
-
+```
 
 |options|type|describe|default|required|
 |-- |-- |-- |-- |-- |
 |context|string|target folder|webpack.context|false|
-|patterns|[]string|glob patterns|`["!**/node_modules","!**/(test|tests)/**"]`|false|
+|patterns|[]string|glob patterns| `!**/node_modules,!**/(test|tests)/**]` |false|
 |sort|any|how to display unused files, `ext` will sort files by extension|null|false|
 |strict|boolean|throw an error when plugin find unused file|false|false|
 
