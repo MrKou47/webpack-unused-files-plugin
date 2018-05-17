@@ -1,0 +1,33 @@
+{
+  "name": "webpack-unused-files-plugin",
+  "version": "1.0.0",
+  "description": "find ununsed files from your project",
+  "main": "index.js",
+  "files": [
+    "src/index.js",
+    "utils/index.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrKou47/webpack-unused-files-plugin.git"
+  },
+  "keywords": [
+    "webpack",
+    "bundle",
+    "unused"
+  ],
+  "author": "mrkou47",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MrKou47/webpack-unused-files-plugin/issues"
+  },
+  "homepage": "https://github.com/MrKou47/webpack-unused-files-plugin#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-recommended": "^2.0.0"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "globby": "^8.0.1"
+  }
+}
