@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const globby = require('globby');
 const chalk = require('chalk').default;
-const { group } = require('./utils');
+const { group } = require('../utils');
 
 const defaultOptions = {
 	context: '',
