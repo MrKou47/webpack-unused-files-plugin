@@ -1,6 +1,6 @@
 {
   "name": "webpack-unused-files-plugin",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "find ununsed files from your project",
   "main": "src/index.js",
   "files": [

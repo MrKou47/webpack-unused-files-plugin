@@ -31,7 +31,7 @@ const defaultOptions = {
     "!**/node_modules",
     "!**/(test|tests)/**"
   ],
-  sort: null, // 'ext'
+  sort: null, // 'ext', 'path'
   strict: false,
 }
 ```
@@ -40,7 +40,7 @@ const defaultOptions = {
 |-- |-- |-- |-- |-- |
 |context|string|target folder|webpack.context|false|
 |patterns|[]string|glob patterns| `!**/node_modules !**/test` |false|
-|sort|any|how to display unused files, `ext` will sort files by extension|null|false|
+|sort|enum|how to display unused files, options `ext`, `path`
 |strict|boolean|throw an error when plugin find unused file|false|false|
 
 
