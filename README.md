@@ -2,6 +2,8 @@
 
 find unused files from your project.
 
+<img src="https://preview.ibb.co/dFP6ko/2018_05_21_2_18_11.png" alt="2018_05_21_2_18_11" border="0">
+
 ## Usage
 
 > yarn add webpack-unused-files-plugin

@@ -52,16 +52,16 @@ class WebpackUnusedFilePlugin {
 		const { sort } = this.options;
 		const { context } = this.options;
 		if (unusedFiles && unusedFiles.length) {
-			console.log(chalk.bgGreen.white('** webpack-unused-plugin output **'), '\n')
+			console.log(chalk.red('you might have some unused files ⚠️'));
 			if (sort === 'ext') {
-				console.log(chalk.green('sort unused file by extension'))
 				unusedFiles = unusedFiles.map(file => ({
 					file,
 					ext: path.extname(file).slice(1),
 				}))
 				const extSortRes = group(unusedFiles, 'ext');
 				for (const ext in extSortRes) {
-					console.log('\n', chalk.red(`${ ext }: `, '\n'))
+					console.log('\r');
+					console.log(chalk.green(`${ ext }: `), '\r\n');
 					if (extSortRes.hasOwnProperty(ext)) {
 						const fileList = extSortRes[ext]
 						fileList.forEach(f => console.log(chalk.yellow(f.file)))
@@ -78,9 +78,8 @@ class WebpackUnusedFilePlugin {
 							sortByDir.other ? sortByDir.other.push(f) : sortByDir.other = [f];
 						}
 					});
-					console.log(chalk.green('sort unused file by path'));
 					for (const dir in sortByDir) {
-						console.log('\n', chalk.red(`${ dir }: `, '\n'))
+						console.log(chalk.red(`${ dir }: `));
 						if (sortByDir.hasOwnProperty(dir)) {
 							const fileList = sortByDir[dir];
 							fileList.forEach(f => console.log(chalk.yellow(f)))
@@ -105,14 +104,15 @@ class WebpackUnusedFilePlugin {
 		patterns.unshift(context)
 		compiler.plugin('emit', (compilcation, callback) => {
 			const dependFiles = compilcation.fileDependencies
-			globby(patterns, { gitignore: true })
+			globby(patterns, {
+				gitignore: true,
+				cwd: context,
+			})
 				.then(_this.filter(dependFiles))
 				.then(_this.sort.bind(_this))
 				.then(unusedFiles => {
-					console.log('\n', chalk.bgGreen.white('** finish webpack-unused-plugin output **'))
 					if (_this.options.strict && unusedFiles && unusedFiles.length)
 						compilcation.errors.push(new Error(`[webpack-unused-files-plugin]: your folder ${ context } contains unused files. Please remove or delete them.`))
-
 					callback()
 				})
 		})
